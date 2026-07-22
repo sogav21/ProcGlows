@@ -18,7 +18,7 @@ addon.events:RegisterEvent("BAG_UPDATE_COOLDOWN")
 addon.events:RegisterEvent("ACTIONBAR_UPDATE_COOLDOWN")
 
 local itemSlotCache = {}
-local LCG = addon.LCG
+local LCG = LibStub("LibCustomGlow-1.0", true)
 local lcgWarnedOnce = false
 local activeGlows = {}
 local GLOW_KEY = "ProcGlows"
@@ -894,7 +894,9 @@ if ActionButtonSpellAlertManager and ActionButtonSpellAlertManager.ShowAlert the
 end
 
 function addon:ClearReplacedBlizzardProcs()
-    if not addon._replacedBlizzardProcButtons then return end
+    if not addon._replacedBlizzardProcButtons then
+        return
+    end
     for button in pairs(addon._replacedBlizzardProcButtons) do
         addon:HideProcGlow(button)
     end
