@@ -198,7 +198,8 @@ local STACK_FONT_SIZE = 20
 local STACK_FONT_FLAGS = "OUTLINE"
 
 function addon:ShowStackCount(frame, count)
-    if not count then
+    local countIsSecret = issecretvalue and issecretvalue(count)
+    if not countIsSecret and not count then
         addon:HideStackCount(frame)
         return
     end
